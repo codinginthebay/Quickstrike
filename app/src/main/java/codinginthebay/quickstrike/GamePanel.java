@@ -23,6 +23,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 
     private Player player;
 
+    private Enemy enemy;
+
     private Random rand = new Random();
 
     public GamePanel(Context context) {
@@ -36,6 +38,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.placeholderbg));
 
         player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.placeholderplayer), 66, 51, 1);
+
+        enemy = new Enemy(BitmapFactory.decodeResource(getResources(), R.drawable.placeholderenemy), 79, 79, 1);
 
         thread = new MainThread(getHolder(), this);
         thread.setRunning(true);
@@ -82,7 +86,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
 //        if(player.getPlaying()){
             bg.update();
             player.update();
-
+            enemy.update();
 
 //        }
 
@@ -106,6 +110,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
             canvas.scale(scaleFactorX,scaleFactorY);
             bg.draw(canvas);
             player.draw(canvas);
+            enemy.draw(canvas);
 
             canvas.restoreToCount(savedState);
         }
