@@ -3,6 +3,8 @@ package codinginthebay.quickstrike;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
+import java.util.Random;
+
 /**
  * Created by Julian on 10/19/2016.
  */
@@ -11,6 +13,10 @@ public class EventCue extends GameObject {
     private Bitmap spritesheet;
     private Animation animation = new Animation();
     private long startTime;
+    private long elapsed;
+    private long timeCheck;
+    public boolean timedEvent;
+
     public EventCue(Bitmap res, int w, int h, int numFrames){
         x = 200;
         y = GamePanel.HEIGHT/2;
@@ -36,12 +42,18 @@ public class EventCue extends GameObject {
     }
 
     public void update(){
-        long elapsed = (System.nanoTime()-startTime)/1000000;
+        elapsed = (System.nanoTime()-startTime)/1000000;
         animation.update();
+        timeCheck = elapsed;
+        if(timeCheck==elapsed){
+            timedEvent=true;
+        }
     }
 
     public void draw(Canvas canvas){
-        canvas.drawBitmap(animation.getImage(), x, y, null);
+        if(elapsed == timeCheck){
+            canvas.drawBitmap(animation.getImage(), x, y, null);
+        }
     }
 
     public void resetDX(){dx=0;}

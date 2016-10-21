@@ -76,8 +76,14 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     public boolean onTouchEvent(MotionEvent event){
 
         if(event.getAction() == MotionEvent.ACTION_DOWN){
-            player.setUp(true);
-            return true;
+            if(!player.getPlaying()){
+                player.setPlaying(true);
+                player.setUp(true);
+            }
+            if(player.getPlaying()){
+                player.setUp(true);
+                return true;
+            }
         }
         if(event.getAction() == MotionEvent.ACTION_UP){
             player.setUp(false);
@@ -91,7 +97,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
             bg.update();
             player.update();
             enemy.update();
+        if(player.getPlaying()){
             eventCue.update();
+        }
 
 //        }
 
@@ -116,7 +124,9 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
             bg.draw(canvas);
             player.draw(canvas);
             enemy.draw(canvas);
-            eventCue.draw(canvas);
+            if(eventCue.timedEvent==true){
+                eventCue.draw(canvas);
+            }
 
             canvas.restoreToCount(savedState);
         }
