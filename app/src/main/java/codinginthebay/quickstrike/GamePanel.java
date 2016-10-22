@@ -3,11 +3,15 @@ package codinginthebay.quickstrike;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import java.lang.reflect.Type;
 import java.util.Random;
 
 /**
@@ -128,7 +132,22 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
                 eventCue.draw(canvas);
             }
 
+            drawText(canvas);
             canvas.restoreToCount(savedState);
+        }
+    }
+
+    public void drawText(Canvas canvas){
+        Paint paint = new Paint();
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(30);
+        paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        if(!player.getPlaying()){
+            canvas.drawText("BEGIN?", WIDTH/2-200, HEIGHT/2,paint);
+
+            paint.setTextSize(20);
+            canvas.drawText("BE READY FOR ACTION!", WIDTH/2-200, HEIGHT/2+20, paint);
+            canvas.drawText("WHEN YOU SEE IT TAP THE SCREEN.", WIDTH/2-200, HEIGHT/2 + 40, paint);
         }
     }
 }

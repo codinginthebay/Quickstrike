@@ -15,7 +15,7 @@ public class EventCue extends GameObject {
     private long startTime;
     private long elapsed;
     private long timeCheck;
-    public boolean timedEvent;
+    public boolean timedEvent = false;
 
     public EventCue(Bitmap res, int w, int h, int numFrames){
         x = 200;
