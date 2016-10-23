@@ -125,9 +125,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
             final int savedState = canvas.save();
 
             canvas.scale(scaleFactorX,scaleFactorY);
-            bg.draw(canvas);
-            player.draw(canvas);
-            enemy.draw(canvas);
+            if(player.getPlaying()){
+                bg.draw(canvas);
+                player.draw(canvas);
+                enemy.draw(canvas);
+            }
             if(eventCue.timedEvent==true){
                 eventCue.draw(canvas);
             }
@@ -143,11 +145,13 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         paint.setTextSize(30);
         paint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
         if(!player.getPlaying()){
-            canvas.drawText("BEGIN?", WIDTH/2-200, HEIGHT/2,paint);
+            canvas.drawText("QUICK STRIKE!", WIDTH/2-200, HEIGHT/2-20,paint);
 
             paint.setTextSize(20);
-            canvas.drawText("BE READY FOR ACTION!", WIDTH/2-200, HEIGHT/2+20, paint);
-            canvas.drawText("WHEN YOU SEE IT TAP THE SCREEN.", WIDTH/2-200, HEIGHT/2 + 40, paint);
+            canvas.drawText("BE READY FOR ACTION!", WIDTH/2-200, HEIGHT/2, paint);
+            canvas.drawText("WHEN YOU SEE", WIDTH/2-200, HEIGHT/2 + 40, paint);
+            eventCue.draw(canvas);
+            canvas.drawText("TAP THE SCREEN.", WIDTH/2+50, HEIGHT/2 + 40, paint);
         }
     }
 }
