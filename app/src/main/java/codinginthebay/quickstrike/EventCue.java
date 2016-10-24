@@ -44,16 +44,16 @@ public class EventCue extends GameObject {
     public void update(){
         elapsed = (System.nanoTime()-startTime)/1000000;
         animation.update();
-        timeCheck = elapsed;
-        if(timeCheck==elapsed){
+        System.out.println("elapsed time: " + elapsed);
+        timeCheck = (startTime)/100000000;  //sets when event happens
+        System.out.println("time check: " + timeCheck);
+        if(elapsed>=timeCheck){
             timedEvent=true;
         }
     }
 
     public void draw(Canvas canvas){
-        if(elapsed == timeCheck){
             canvas.drawBitmap(animation.getImage(), x, y, null);
-        }
     }
 
     public void resetDX(){dx=0;}
