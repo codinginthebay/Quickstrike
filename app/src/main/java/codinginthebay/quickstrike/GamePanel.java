@@ -26,6 +26,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     private Background bg;
 
     private Player player;
+    private Player playerAttack;
+    private Player playerLose;
 
     private Enemy enemy;
 
@@ -44,6 +46,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.placeholderbg));
 
         player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.placeholderplayer), 66, 51, 1);
+        playerAttack = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.placeholderplayer_attack), 80, 80, 1);
+        playerLose = new Player(BitmapFactory.decodeResource(getResources(),R.drawable.placeholderplayer_lose), 80, 80, 1);
 
         enemy = new Enemy(BitmapFactory.decodeResource(getResources(), R.drawable.placeholderenemy), 79, 79, 1);
 
