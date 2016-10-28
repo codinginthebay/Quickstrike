@@ -30,6 +30,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     private Player playerLose;
 
     private Enemy enemy;
+    private Enemy enemyAttack;
+    private Enemy enemyLose;
 
     private EventCue eventCue;
 
@@ -50,6 +52,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
         playerLose = new Player(BitmapFactory.decodeResource(getResources(),R.drawable.placeholderplayer_lose), 80, 80, 1);
 
         enemy = new Enemy(BitmapFactory.decodeResource(getResources(), R.drawable.placeholderenemy), 79, 79, 1);
+        enemyAttack = new Enemy(BitmapFactory.decodeResource(getResources(), R.drawable.placeholderenemy_attack), 100, 100, 1);
+        enemyLose = new Enemy(BitmapFactory.decodeResource(getResources(), R.drawable.placeholderenemy_lose), 80, 80, 1);
 
         eventCue = new EventCue(BitmapFactory.decodeResource(getResources(), R.drawable.placeholdereventcue), 80, 80, 1);
 
