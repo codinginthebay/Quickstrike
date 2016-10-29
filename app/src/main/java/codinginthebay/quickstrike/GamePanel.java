@@ -11,7 +11,6 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import java.lang.reflect.Type;
 import java.util.Random;
 
 /**
@@ -105,7 +104,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
     }
 
     public void update(){
-//        if(player.getPlaying()){
+        if(player.getPlaying()){
             bg.update();
             player.update();
             enemy.update();
@@ -113,7 +112,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback{
             eventCue.update();
         }
 
-//        }
+        }
 
     }
 
